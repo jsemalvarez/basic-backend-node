@@ -1,7 +1,7 @@
 const { errorResponse } = require("../utils/response");
 
 const errorHandle = (err, req, res, next) => {
-  // console.log({ err });
+  console.log({ err });
 
   if (err.statusCode) {
     const message = err.message;
