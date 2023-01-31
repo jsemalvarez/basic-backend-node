@@ -6,12 +6,9 @@ const validateJWT = (req, res, next) => {
     const token = req.header("x-access-token");
 
     if (!token) {
-      return respose.errorResponse(
-        req,
-        res,
-        "No hay token en la petición",
-        401
-      );
+      const message = "No hay token en la petición";
+      const status = 401;
+      return respose.errorResponse(req, res, message, status);
     }
 
     const { id, name } = jwt.verify(token, process.env.JWT_SECRET_SEED);
@@ -19,7 +16,9 @@ const validateJWT = (req, res, next) => {
     req.user = { id, name };
     next();
   } catch (error) {
-    return respose.errorResponse(req, res, "Token no válido", 401);
+    const message = "Token no válido";
+    const status = 401;
+    return respose.errorResponse(req, res, message, status);
   }
 };
 
