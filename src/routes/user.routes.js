@@ -3,6 +3,8 @@ const express = require("express");
 const { buildError } = require("../utils/buildError");
 const { successResponse } = require("../utils/response");
 
+const userController = require("../controllers/user.controller");
+
 const router = express.Router();
 
 router.get("/", async (req, res, next) => {
@@ -23,5 +25,7 @@ router.get("/", async (req, res, next) => {
     next(error);
   }
 });
+
+router.post("/create", userController.createOne);
 
 module.exports = router;
