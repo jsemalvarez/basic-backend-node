@@ -23,6 +23,19 @@ const createOne = async (req, res, next) => {
   }
 };
 
+const login = async (req, res, next) => {
+  const { email, password } = req.body;
+
+  try {
+    const data = user;
+    const status = 400;
+    response.successResponse(req, res, data, status);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   createOne,
+  login,
 };
